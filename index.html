@@ -4,48 +4,40 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css">
-    <title>Document</title>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-firestore.js"></script>
+    <title>Todos</title>
 </head>
 <body>
     <div class="list">
         <h2>ToDo List CSS</h2>
-        <ul>
-          <li>
-            <label>
-              <input type="checkbox" name="">
-              <p>Tarea #1</p>
-              <span></span>
-            </label>
-          </li>
-          <li>
-            <label>
-              <input type="checkbox" name="">
-              <p>Tarea #2</p>
-              <span></span>
-            </label>
-          </li>
-          <li>
-            <label>
-              <input type="checkbox" name="">
-              <p>Tarea #3</p>
-              <span></span>
-            </label>
-          </li>
-          <li>
-            <label>
-              <input type="checkbox" name="">
-              <p>Tarea #4</p>
-              <span></span>
-            </label>
-          </li>
-          <li>
-            <label>
-              <input type="checkbox" name="">
-              <p>Tarea #5</p>
-              <span></span>
-            </label>
-          </li>
+        <ul id="todos-list">
+          
         </ul>
       </div>
+
+     
+      
+
+      <!-- TODO: Add SDKs for Firebase products that you want to use
+          https://firebase.google.com/docs/web/setup#available-libraries -->
+
+      <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+          apiKey: "AIzaSyAobXEtRiD9qr63qHoXE_0w0uUvUli_5PY",
+          authDomain: "dsc-firestore-workshop.firebaseapp.com",
+          projectId: "dsc-firestore-workshop",
+          storageBucket: "dsc-firestore-workshop.appspot.com",
+          messagingSenderId: "99796984424",
+          appId: "1:99796984424:web:20bf551a7ca8b52c47d1dd"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        // Create ref to firestore database
+        const db = firebase.firestore()
+      </script>
+      <script src="app.js"></script>
 </body>
 </html>
