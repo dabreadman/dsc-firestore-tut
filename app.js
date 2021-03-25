@@ -30,13 +30,19 @@ function renderToDo(doc) {
   cancelButton.classList.add("secondary-content");
   cancelIcon.appendChild(cancelText);
   cancelButton.appendChild(cancelIcon);
-  cancelButton.setAttribute("href", "!#");
+  cancelButton.setAttribute("href", "#!");
+
+  cancelIcon.addEventListener("click", (e) => {
+    e.stopPropagation();
+    const docId = e.target.parentElement.parentElement.getAttribute("data-id");
+    deleteToDo(docId);
+  });
 
   li.appendChild(text);
   li.appendChild(cancelButton);
   li.appendChild(checkButton);
   li.classList.add("collection-item");
-  li.setAttribute("data-id", doc.Id);
+  li.setAttribute("data-id", doc.id);
 
   todo.appendChild(li);
 }
