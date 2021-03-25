@@ -1,4 +1,5 @@
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -6,7 +7,7 @@
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <!-- The core Firebase JS SDK is always required and must be listed first -->
@@ -14,64 +15,64 @@
     <script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-firestore.js"></script>
     <title>Todos</title>
 </head>
-<body>
-  
-  <div class="container">
-    <div class="row" style="margin-top: 30%">
-      <div class="col s12 m6 center-align">
-        <div class="card">
-          <div class="card-content">
-            <h4 class="grey-text text-darken-2"><b>Todo List</b></h4>
-            <div class="divider"></div>
-            <ul class="collection left-align" id="todos-list">
-              <li class="collection-item">
-                  Sample todo
-                  <a href="#!" class="secondary-content"> 
-                    <i class="material-icons">check</i>
-                    <i class="material-icons red-text">close</i>
-                  </a>
-              </li>
-            </ul>
-          </div>
-        </div>
 
-        <div class="card-panel" style="padding: 0px; padding-left: 12px">  
-            <form id="add-todo-form">
-              <div class="row valign-wrapper">
-                <div class="input-field col s8">
-                  <input placeholder="What are you gonna do?" 
-                         name="todoText" 
-                         type="text">
+<body>
+
+    <div class="container">
+        <div class="row" style="margin-top: 30%">
+            <div class="col s12 m6 center-align">
+                <div class="card">
+                    <div class="card-content">
+                        <h4 class="grey-text text-darken-2"><b>Todo List</b></h4>
+                        <div class="divider"></div>
+                        <ul class="collection left-align" id="todos-list">
+                            <li class="collection-item">
+                                Sample todo
+                                <a href="#!" class="secondary-content">
+                                    <i class="material-icons">check</i>
+                                    <i class="material-icons red-text">close</i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="input-field col s4 inline">
-                  <button type="submit" class="btn z-depth-0">add</button>
+
+                <div class="card-panel" style="padding: 0px; padding-left: 12px">
+                    <form id="add-todo-form">
+                        <div class="row valign-wrapper">
+                            <div class="input-field col s8">
+                                <input placeholder="What are you gonna do?" name="todoText" type="text">
+                            </div>
+                            <div class="input-field col s4 inline">
+                                <button type="submit" class="btn z-depth-0">add</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
-              </div>
-            </form>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
-     
-      <!-- TODO: Add SDKs for Firebase products that you want to use
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
           https://firebase.google.com/docs/web/setup#available-libraries -->
 
-      <script>
+    <script>
         // Your web app's Firebase configuration
         var firebaseConfig = {
-          apiKey: "AIzaSyAobXEtRiD9qr63qHoXE_0w0uUvUli_5PY",
-          authDomain: "dsc-firestore-workshop.firebaseapp.com",
-          projectId: "dsc-firestore-workshop",
-          storageBucket: "dsc-firestore-workshop.appspot.com",
-          messagingSenderId: "99796984424",
-          appId: "1:99796984424:web:20bf551a7ca8b52c47d1dd"
+            apiKey: "AIzaSyAobXEtRiD9qr63qHoXE_0w0uUvUli_5PY",
+            authDomain: "dsc-firestore-workshop.firebaseapp.com",
+            projectId: "dsc-firestore-workshop",
+            storageBucket: "dsc-firestore-workshop.appspot.com",
+            messagingSenderId: "99796984424",
+            appId: "1:99796984424:web:20bf551a7ca8b52c47d1dd"
         };
         // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
         // Create ref to firestore database
         const db = firebase.firestore()
-      </script>
-      
-      <script src="app.js"></script>
+    </script>
+
+    <script src="app.js"></script>
 </body>
+
 </html>

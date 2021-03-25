@@ -5,7 +5,7 @@ const form = document.querySelector('#add-todo-form')
 function renderTodo(doc) {
     let li = document.createElement('li')
     let text = document.createTextNode(doc.data().text)
-    
+
     let checkButton = document.createElement('a')
     let check = document.createElement('i')
     let checkIcon = document.createTextNode("check")
@@ -21,7 +21,7 @@ function renderTodo(doc) {
     cancel.classList.add("material-icons", "red-text")
     cancelButton.classList.add("secondary-content")
     cancel.appendChild(cancelIcon)
-    
+
     // add delete functionality
     cancel.addEventListener('click', e => {
         e.stopPropagation()
@@ -29,10 +29,17 @@ function renderTodo(doc) {
         let id = e.target.parentElement.parentElement.getAttribute('data-id')
         deleteTodo(id)
     })
-    
+
+    // add line through on completed
+    check.addEventListener('click', e => {
+        e.stopPropagation()
+        console.log(e.target)
+        e.target.parentElement.parentElement.classList.add("completed")
+    })
+
     cancelButton.appendChild(cancel)
     cancelButton.setAttribute("href", "#!")
-    
+
     li.appendChild(text)
     li.appendChild(cancelButton)
     li.appendChild(checkButton)
@@ -57,8 +64,7 @@ db.collection('todos').onSnapshot(snapshot => {
     changes.forEach(change => {
         if (change.type == 'added') {
             renderTodo(change.doc)
-        }
-        else if (change.type == 'removed') {
+        } else if (change.type == 'removed') {
             let li = todoList.querySelector('[data-id="' + change.doc.id + '"]')
             todoList.removeChild(li)
         }
@@ -68,14 +74,13 @@ db.collection('todos').onSnapshot(snapshot => {
 // saving data
 form.addEventListener('submit', e => {
     e.preventDefault()
-   db.collection('todos').add({
-       text: form.todoText.value
-   })
-   form.reset()
+    db.collection('todos').add({
+        text: form.todoText.value
+    })
+    form.reset()
 })
 
 // delete data
 function deleteTodo(id) {
     db.collection('todos').doc(id).delete()
 }
-
