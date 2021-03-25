@@ -14,3 +14,7 @@ body {
 .collection-item {
   border: 0px;
 }
+
+.finished{
+  text-decoration: line-through;
+}
