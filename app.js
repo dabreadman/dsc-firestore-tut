@@ -8,6 +8,8 @@ const form = document.getElementById("add-todo-form");
 function renderToDo(doc) {
   let li = document.createElement("li");
   let text = document.createTextNode(doc.data().Description);
+
+  // Build Check Button
   let checkButton = document.createElement("a");
   let checkIcon = document.createElement("i");
   let checkText = document.createTextNode("check");
@@ -23,6 +25,7 @@ function renderToDo(doc) {
     e.target.parentElement.parentElement.classList.add("finished");
   });
 
+  // Build Cancel Button
   let cancelButton = document.createElement("a");
   let cancelIcon = document.createElement("i");
   let cancelText = document.createTextNode("close");
@@ -32,34 +35,49 @@ function renderToDo(doc) {
   cancelButton.appendChild(cancelIcon);
   cancelButton.setAttribute("href", "#!");
 
+  // Add handler to delete document on click
   cancelIcon.addEventListener("click", (e) => {
     e.stopPropagation();
     const docId = e.target.parentElement.parentElement.getAttribute("data-id");
     deleteToDo(docId);
   });
 
+  // Build li element
   li.appendChild(text);
   li.appendChild(cancelButton);
   li.appendChild(checkButton);
   li.classList.add("collection-item");
   li.setAttribute("data-id", doc.id);
 
+  // Add li element to DOM
   todo.appendChild(li);
 }
 
+// Delete document on Firestore
 function deleteToDo(id) {
   db.collection("todos").doc(id).delete();
 }
 
-// Get all todos
-db.collection("todos")
-  .get()
-  .then((snapshot) => {
-    snapshot.docs.forEach((doc) => {
-      renderToDo(doc);
-    });
-  });
+// Delete li element by document id
+function deleteToDoElementById(id) {
+  let li = todo.querySelector('[data-id="' + id + '"]');
+  li.parentElement.removeChild(li);
+}
 
+// Triggers everytime collection changes
+db.collection("todos").onSnapshot((snapshot) => {
+  let changes = snapshot.docChanges();
+  console.log(changes);
+  changes.forEach((change) => {
+    if (change.type == "added") {
+      renderToDo(change.doc);
+    } else if (change.type == "removed") {
+      deleteToDoElementById(change.doc.id);
+    }
+  });
+});
+
+// Add handler for form submission
 form.addEventListener("submit", (e) => {
   // Stop form reset
   e.preventDefault();
