@@ -41,6 +41,10 @@ function renderToDo(doc) {
   todo.appendChild(li);
 }
 
+function deleteToDo(id) {
+  db.collection("todos").doc(id).delete();
+}
+
 // Get all todos
 db.collection("todos")
   .get()
