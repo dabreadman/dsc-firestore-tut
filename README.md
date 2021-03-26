@@ -1,6 +1,6 @@
 
 # dsc-firestore-tut
-A short tutorial to using Firestore by creating a simple to-do list.
+A tutorial to using Firestore by creating a todo list web application.
 
 ## Overview
 
@@ -10,7 +10,7 @@ We imported Javascript modules directly in the [HTML](https://github.com/dabread
 
 We also used [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) to serve locally and provide `Hot-Reloading` (i.e. not needing to refresh after changes).
 
-- We invoke a listener to collection, and renders all the documents on DOM while storing the **id** of the documents using `renderToDo(doc)` function.
+- We invoke a listener on collection and renders all the documents to DOM while storing the **id** of the retrieved documents using `renderToDo(doc)` function.
 - We have listeners on the rendered elements, and on `click` on **CheckButton** (specifically CheckIcon), we apply a strikethrough using CSS.
 - On `click` on **CancelButton** (specifically CancelIcon), we delete document by id from collection using `deleteToDo(id)` function.
 - Once the document is deleted, collection listener invokes a function, and judging from the `removed` **type**, we remove element from DOM using `deleteToDoElementById(id)` function.
@@ -61,7 +61,7 @@ db.collection("todos").add({
 
 ### Removing document
 
-This removes the document with specified **id** from the collection `todos`.
+This statement removes the document with specified **id** from the collection `todos`.
 
 ```javascript
 db.collection("todos").doc(id).delete();
@@ -69,7 +69,7 @@ db.collection("todos").doc(id).delete();
 
 ### Get documents inside a collection  
 
-This gets all the documents inside `todos` collection.
+This statement gets all the documents inside the `todos` collection.
 
 ```javascript
 db.collection("todos")
@@ -83,8 +83,9 @@ db.collection("todos")
 
 ### Listens for collection changes
 
-This monitor changes to collection `todos`, and invoke this statement when a change is detected, which is far more useful than previous approach.  
-This also results all the documents in collect on initialization.
+This monitor changes to collection `todos`, and invoke this statement when a change is detected.  
+It is far more useful than the previous approach.  
+This statement also returns all the documents in the collection on initialization.
 
 ```javascript
 // Triggers every time collection changes
@@ -105,7 +106,8 @@ and click on `Go to console`.
 Then we can create a new project by clicking `Create a project`.
 ![Create project](https://i.imgur.com/ehfMjj3.jpg)
 
-Then we can name our project, we named it `Some-Project` here.
+Then we can name our project.    
+It is named `Some-Project` here.
 ![Project name](https://i.imgur.com/KikhuzA.jpg)
 
 We could choose to enable `Google Analytics` (we didn't enable it for this project as this is not outward facing).
@@ -122,22 +124,25 @@ And now the project creation is done!
 Press `Continue` to continue.  
 ![Finish Project Creation](https://i.imgur.com/U2gJEz9.jpg)
 
-Now we can choose some application type for our project, in this example we are making a Web Application so we chose `Web`.
+Now we can choose some application type for our project.   
+In this example, we are making a Web Application so we choose `Web`.
 ![Application type](https://i.imgur.com/rFdpP6M.jpg)
 
-Now we register our application name, we chose `Some-Project` (bad naming, it should be `Some-Application`..  
+Now we register our application name `Some-Project` (it is a terrible name, it should be `Some-Application`..  
 Regardless, now `Register app`.  
 One can also host the application on [`Firebase Hosting`](https://firebase.google.com/docs/hosting).
 ![Application Name](https://i.imgur.com/Xyk7b7Y.jpg)
 
-We are presented with this page, and we can/need to insert them into our source files, we chose to insert them into the [HTML](https://github.com/dabreadman/dsc-firestore-tut/blob/master/index.html).   
-**Reason**? This serves as an introduction, and we are lazy :U
+We were shown with this page, and we can/need to insert them into our source files, we chose to insert them into the [HTML](https://github.com/dabreadman/dsc-firestore-tut/blob/master/index.html).   
+**Reason**? This would serve as an introduction, and we are lazy :U
 ![Firebase SDK](https://i.imgur.com/gCntRpX.jpg)
 
-Now that we have registered our application, we can `Create Database` through `Firestore Database`, one could expand this option from the bottom left.  
+Now that we have registered our application, we can `Create Database` through `Firestore Database`.  
+One could expand this option from the bottom left.  
 ![Create database](https://i.imgur.com/43B0hSO.jpg)
 
-We will be creating a database using the rules of  `test mode`, we could change that afterwards when we're done.
+We will be creating a database using the rules of  `test mode`.   
+We could change that afterwards when we finished our testing.
 ![Cloud Firestore rules](https://i.imgur.com/3CIQ8IH.jpg)
 
 As in here (`https://console.firebase.google.com/u/1/project/some-project/firestore/rules`).  
@@ -158,7 +163,7 @@ Here we create a `collection` named `Some-Collection`.
 
 Now we add a `document`.  
 We can use `Auto-ID` because why not, am I right?  
-Well there's a reason we use `password generator` instead of thinking them ourselves, and it'd be bad to have the **id**s reverse engineered.
+Well, there's a reason we use `password generator` instead of thinking them ourselves, and it would spell doom to have the **id**s easily reverse-engineered.
 ![Document Auto-ID](https://i.imgur.com/iQUbWgc.jpg)
 
 Now let's declare a **Field** of `Some-Field` with the **type** `string` and **value** of `Some-Value`.  
@@ -169,4 +174,4 @@ And there goes our collection!
 ![Collection overview](https://i.imgur.com/cD2iVWs.jpg)
 
 Now we can just do addition/deletion/modification etc!  
-The setup is done.
+Congratulations!
