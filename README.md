@@ -15,6 +15,9 @@ We also used [Live Server](https://marketplace.visualstudio.com/items?itemName=r
 - On `click` on **CancelButton** (specifically CancelIcon), we delete document by id from collection using `deleteToDo(id)` function.
 - Once the document is deleted, collection listener invokes a function, and judging from the `removed` **type**, we remove element from DOM using `deleteToDoElementById(id)` function.
 - On `form` submission, we add document to collection. Similar to deletion, we get the `added` **type**, and renders the element to DOM using `renderToDo(doc)` function.
+
+![Todo List](https://i.imgur.com/oMCKozl.png)
+
 ## Serve locally
 
 Either use [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer),  
